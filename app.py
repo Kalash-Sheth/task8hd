@@ -212,11 +212,12 @@ if mode == "💬 Text":
 # VOICE MODE
 elif mode == "🎤 Voice":
     st.markdown('<div class="card"><div class="card-title">Voice input</div>', unsafe_allow_html=True)
-    st.info("Click the button below and speak your movie preference clearly.")
-    if st.button("🎤  Start Listening", use_container_width=True):
-        with st.spinner("Listening... speak now"):
+    st.info("Record your movie preference below, then click Transcribe.")
+    audio_input = st.audio_input("Record your voice")
+    if audio_input and st.button("🎤  Transcribe", use_container_width=True):
+        with st.spinner("Transcribing..."):
             try:
-                recognised = speech_to_text()
+                recognised = speech_to_text(audio_input.read())
             except RuntimeError as e:
                 st.error(str(e))
                 recognised = ""
