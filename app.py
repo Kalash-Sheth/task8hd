@@ -2,9 +2,9 @@
 import streamlit as st
 import tempfile
 import os
-from recommender import get_recommendation
-from vision import analyse_image
-from speech import speech_to_text, text_to_speech
+from utils.recommender import get_recommendation
+from utils.vision import analyse_image
+from utils.speech import speech_to_text, text_to_speech
 
 st.set_page_config(
     page_title="CineMind — Movie Recommendations",
